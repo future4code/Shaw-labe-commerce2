@@ -1,16 +1,16 @@
 ### StarLab - (GRUPO2)
 
-### INTEGRANTES
+## INTEGRANTES
 - Stella Neves
 - William Freitas
 - Martin Sejas
 
 ### O que funciona
 
-### O que não funciona
+## O que não funciona
 - Nada
 
-### Link Surge 
+## Link Surge 
 
 
-### Imagens
+## Imagens
