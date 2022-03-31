@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1, 
+        "name": "Han Solo", 
+        "price": 100, 
+        "image": ""
+    },
+    {
+        "id": 2,
+        "name": "Chewbacca", 
+        "price": 5, 
+        "image": ""
+    },
+    {
+        "id": 3,
+        "name": "Aeronave", 
+        "price": 87, 
+        "image": ""
+    },
+    {
+        "id": 4,
+        "name": "Produto 4", 
+        "price": 250, 
+        "image": ""
+    }
+]
