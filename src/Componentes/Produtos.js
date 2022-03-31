@@ -63,17 +63,18 @@ export default class Produtos extends React.Component{
 
     state = { 
         produtos: ListaProdutos, //recebe a lista de produtos do JSON salvo em nosso arquivo data, importado como ListaProdutos
-        //se order = 1, ordem de preco crescente, se -1 ordem de preco decrescente
+        //se order = 1, ordem de valor minimo primeiro, se -1 valor maximo primeiro
         order: 1,  
     }
 
+    //função de ordenar produtos
     ordemDeProdutos = (event) => {
         if (event.target.value === "crescente") {
-        this.setState({order: 1});
+        this.setState({order: 1}); //positivo
         }
         else 
         {
-            this.setState({order: -1})
+            this.setState({order: -1}) //negativo
         }
     }
 
@@ -94,9 +95,9 @@ export default class Produtos extends React.Component{
             return (prod.price >= filtroMinimo)}
         ).filter ( (prod) => { return prod.price <= filtroMaximo || !filtroMaximo}
         ).sort( (prod, nextProd) => {
-            return this.state.order*( prod.price - nextProd.price); 
+            return this.state.order* (prod.price - nextProd.price); //negativo = TRUE NAO MUDA NADA
         } )
-
+                                //ATUAL TEM VALOR 100 PROX 150   -50,   
         //produtos Filtrados para renderizar
         let produtosFiltrados = [...produtosFiltradosMinMax];
 
