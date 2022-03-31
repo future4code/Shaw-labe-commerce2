@@ -16,8 +16,7 @@ flex-direction: row;
 justify-content: space-between; 
 align-items: center;
 height: 7vh;
-width: 100%; 
-background-color: yellow; 
+width: 100%;
 flex-grow: 0; 
 /* margin: 0 2% 0 2%;  */
 
@@ -39,9 +38,6 @@ padding-bottom: 3%;
 flex-wrap: wrap;
 `
 
-
-
-
 const OrdenarSelecao = styled.div`
 display: flex; 
 flex-direction: row; 
@@ -50,7 +46,9 @@ justify-content: space-evenly;
 padding-right: 5%;
 width: 15%; 
 
-
+p {
+    padding-right: 5%;
+}
 // ..:::::: MUDAR DEPOIS :::::::::......
 select {
     align-self: center; 
@@ -65,7 +63,19 @@ export default class Produtos extends React.Component{
 
     state = { 
         produtos: ListaProdutos, //recebe a lista de produtos do JSON salvo em nosso arquivo data, importado como ListaProdutos
-       
+        //se order = 1, ordem de valor minimo primeiro, se -1 valor maximo primeiro
+        order: 1,  
+    }
+
+    //função de ordenar produtos
+    ordemDeProdutos = (event) => {
+        if (event.target.value === "crescente") {
+        this.setState({order: 1}); //positivo
+        }
+        else 
+        {
+            this.setState({order: -1}) //negativo
+        }
     }
 
 
@@ -83,8 +93,11 @@ export default class Produtos extends React.Component{
 
         let produtosFiltradosMinMax = this.state.produtos.filter( (prod) => {
             return (prod.price >= filtroMinimo)}
-        ).filter ( (prod) => { return prod.price <= filtroMaximo || !filtroMaximo})
-
+        ).filter ( (prod) => { return prod.price <= filtroMaximo || !filtroMaximo}
+        ).sort( (prod, nextProd) => {
+            return this.state.order* (prod.price - nextProd.price); //negativo = TRUE NAO MUDA NADA
+        } )
+                                //ATUAL TEM VALOR 100 PROX 150   -50,   
         //produtos Filtrados para renderizar
         let produtosFiltrados = [...produtosFiltradosMinMax];
 
@@ -104,20 +117,20 @@ export default class Produtos extends React.Component{
         let produtosRenderizados = produtosFiltrados.map( (produto) => {
             return ( <CardProduto key={produto.id} Produto = {produto}> </CardProduto>)
         })
-
         return (
             <ContainerProdutos>
                
                 <OrdenarProdutos>
                  <div> 
-                      <p>Quantidade de Produtos   --- EU SOU O CONTAINER PRODUTOS</p> 
+                      <p>Quantidade de Produtos: {produtosRenderizados.length}</p> 
                 </div>
                  <OrdenarSelecao>
                      <p>Ordenação: </p> 
-                      <select>
-                          Crescente
-                        <option>Decrescente</option>
-                        <option>Crescente</option>
+                      <select
+                      onChange={this.ordemDeProdutos}
+                      >
+                        <option value="crescente" >Valor Minimo</option>
+                        <option value="decrescente">Valor Maximo</option>
                     </select> 
                   </OrdenarSelecao>
                 </OrdenarProdutos>
