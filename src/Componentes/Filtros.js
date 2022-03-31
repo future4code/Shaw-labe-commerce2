@@ -58,12 +58,12 @@ export default class Filtros extends React.Component{
                
                 <CampoDeFiltro>
                     <label>Valor Minimo (R$)</label>
-                    <input placeholder= "0" type="number" onChange={this.props.inputFiltroMinimo} value = {this.props.filtroMinimo}/>
+                    <input  type="text" onChange={this.props.inputFiltroMinimo} value = {this.props.filtroMinimo}/>
                 </CampoDeFiltro>
 
                 <CampoDeFiltro>
                     <label>Valor Maximo (R$)</label>
-                    <input placeholder= "" type="number" onChange={this.props.inputFiltroMaximo} value = {this.props.filtroMaximo}/>
+                    <input placeholder= "" type="text" onChange={this.props.inputFiltroMaximo} value = {this.props.filtroMaximo}/>
                 </CampoDeFiltro>
 
                 <CampoDeFiltro>

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import CardProduto from "./CardProduto";
+import ListaProdutos from '../data/ProdutosStarLab.json'
 
 const ContainerProdutos = styled.div`
 background-color: blanchedalmond; 
@@ -63,38 +64,46 @@ export default class Produtos extends React.Component{
     //RECEBE DE PROP PRODUTO
 
     state = { 
-        produtos: [...this.props.produtos],
+        produtos: ListaProdutos, //recebe a lista de produtos do JSON salvo em nosso arquivo data, importado como ListaProdutos
+       
     }
 
-    //FAZER ON MOUNT GUARDAR PRODUTOS
 
     render() {
 
-          // Passar array PRODUTOS por filtros escolhidos, para decidir o que renderizar
-        //array de copia para nao mexer com dados originais
-        let produtosParaFiltrar = [...this.state.produtos]; 
-        console.log("produtosParaFiltrar", produtosParaFiltrar)
+       //pegando valores dos filtros do Pai, e ja jogando o valor do filtro escrito para lowercase
+       let filtroMinimo = this.props.filtroMinimo; 
+       let filtroMaximo = this.props.filtroMaximo; 
+       let filtroNome = this.props.filtroNome.toLowerCase();  
+ 
+        
+        //Filtramos os produtos primeiramente pelo filtro minimo, e depois pelo valor maximo
+        //tenha em consideracão que a logica || !filtroMaximo significa "ou se filtroMaximo estiver em branco, retorne o produto"
+        // ele vai retornar todo produto (prod) que marcar como true o que estiver no return
 
-        //array de produtos filtrados, primeiro filtrar valores maiores que filtro minimo, e depois filtrar menores que filtro maximo
-        let produtosFiltrados = produtosParaFiltrar.filter ( (prod) => {   return prod.price > this.state.filtroMinimo}
-        )//.filter( (prod) => { return (prod.price <= this.state.filtroMaximo)});
+        let produtosFiltradosMinMax = this.state.produtos.filter( (prod) => {
+            return (prod.price >= filtroMinimo)}
+        ).filter ( (prod) => { return prod.price <= filtroMaximo || !filtroMaximo})
 
-        console.log("produtosFiltrados", produtosFiltrados)
+        //produtos Filtrados para renderizar
+        let produtosFiltrados = [...produtosFiltradosMinMax];
 
-        //Só filtramos com nome, se o input de filtro de nome tiver algo escrito
-        if(this.state.filtroNome)
+        //se existir algum texto no campo de filtro por nome
+        if(filtroNome !== "")
         {
-            let produtosFiltradosPorNome = produtosFiltrados.filter( (produto) => { return (produto.nome.includes(this.state.filtroNome))});
-            produtosFiltrados = [...produtosFiltradosPorNome]; 
+            //redefinir produtos filtrados para ver se o nome bate
+            produtosFiltrados = produtosFiltradosMinMax.filter( (prod) => {
+                return( prod.name.toLowerCase().includes(filtroNome))
+            })
         }
-
-        //renderizar produtos
+    
+        //renderizaramos os produtos que sobraram os filtros, mandando os produtos em lista usando map, 
+        //cada item da lista sendo formatado em card, encaixando o produto nas tags <CardProduto>
+        //observe que usamos o id do produto como key pro react, para não dar ruim
 
         let produtosRenderizados = produtosFiltrados.map( (produto) => {
-            return ( <CardProduto Produto = {produto}></CardProduto>)
+            return ( <CardProduto key={produto.id} Produto = {produto}> </CardProduto>)
         })
-
-        console.log("Produtos Renderizados", produtosRenderizados)
 
         return (
             <ContainerProdutos>
