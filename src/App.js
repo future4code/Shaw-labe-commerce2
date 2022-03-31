@@ -38,8 +38,6 @@ const Logo = styled.img`
     margin-left: 2%;
     background-color: #272134;
     border-radius: 15%;
-  
-
 `;
 
 // Estilização do footer 
