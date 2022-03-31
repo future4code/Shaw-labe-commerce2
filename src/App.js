@@ -48,7 +48,27 @@ color: white;
 width: 100%;
 height: 10vh;
 flex-grow:0; //PARA MANTER ALTURA FIXA
-`
+/* justify-content: center; */
+/* img{
+  overflow: hidden;
+  
+  
+
+} */
+
+h3{
+  font-size: 1.5rem;
+  color: #bf870d;
+  text-align: center;
+  
+  
+}
+ h5{
+   color: #bf870d;
+   text-align: center;
+ }`
+
+
 
 
 
@@ -71,7 +91,13 @@ class App extends React.Component {
 
 
         <Footer>
-          EU SOU O FOOTER
+        <LogoDiv>
+            <Logo src={img} alt="Imagem do logo" />
+          </LogoDiv>
+          <div>
+          <h3>Empresa StarLab CNPJ 00000000</h3>
+          <h5>Desenvolvido por: Martin Sejas, Stella Castro e William Freitas</h5>
+          </div>
         </Footer>
       </Pai>
     );
