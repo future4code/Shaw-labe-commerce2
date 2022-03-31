@@ -14,3 +14,9 @@
 
 
 ## Imagens
+
+##Paleta de cores até o momento
+
+#331436
+#bf870d
+#272134

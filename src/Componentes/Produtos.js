@@ -33,6 +33,8 @@ max-width:100%;
 justify-content: space-evenly;
 background-color: orange; 
 flex-grow: 1; 
+padding-bottom: 3%;
+flex-wrap: wrap;
 `
 
 
@@ -75,6 +77,9 @@ export default class Produtos extends React.Component{
                 </OrdenarProdutos>
 
                 <ProdutosCardContainer>
+                <CardProduto/>
+                <CardProduto/>
+                <CardProduto/>
                 <CardProduto/>
                 <CardProduto/>
                 <CardProduto/>
