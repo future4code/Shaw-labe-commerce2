@@ -2,12 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import CardProduto from "./CardProduto";
 import ListaProdutos from '../data/ProdutosStarLab.json'
+import Background from '../Imagens/Background.jpg'
 
 const ContainerProdutos = styled.div`
-background-color: blanchedalmond; 
+background-color: #331436; 
 display: flex; 
 flex-direction: column; 
 flex-grow: 1; 
+border: 1px solid #bf870d;
 `
 
 const OrdenarProdutos = styled.div`
@@ -19,6 +21,7 @@ height: 7vh;
 width: 100%;
 flex-grow: 0; 
 /* margin: 0 2% 0 2%;  */
+color: #bf870d;
 
 div {
     padding-left: 4%;
@@ -32,10 +35,11 @@ display:flex;
 max-width:100%; 
 min-height:70vh;
 justify-content: space-evenly;
-background-color: orange; 
+background:url(${Background}); 
 flex-grow: 1; 
 padding-bottom: 3%;
 flex-wrap: wrap;
+border: 1px solid #bf870d
 `
 
 const OrdenarSelecao = styled.div`

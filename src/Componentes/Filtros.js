@@ -8,6 +8,7 @@ background-color: #331436 ;
 flex-grow: 0; 
 width: 20%; 
 align-items: center; 
+border: 1px solid #bf870d;
 
 //#331436 #bf870d #272134
 p {
