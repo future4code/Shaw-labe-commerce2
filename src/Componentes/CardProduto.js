@@ -13,12 +13,22 @@ margin-right: 0.2%;
 margin-top: 2%; 
 `
 
+//RECEBE COMO PROPS OBJETO PRODUTO
+//ACESSAR COM produto = this.props.Produto
+//cada produto tem: id, nome, preco, e imagem
+
+
 
 export default class CardProduto extends React.Component{
+
+   
+
     render() {
+        let produto = [...this.props.Produto]
         return (
             <ContainerCard>
-                EU SOU O CARD DO PRODUTO
+                <p>EU SOU O CARD DO {produto.nome}</p>
+                <p>MEU PREÇO {produto.preco}</p>
             </ContainerCard>
         )
     }
