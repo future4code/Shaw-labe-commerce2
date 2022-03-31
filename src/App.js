@@ -28,45 +28,59 @@ const LogoDiv = styled.div`
   background-color: #bf870d;
   border-radius: 15%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+
 `
 
 const Logo = styled.img`
     width: 97%;
-    height: 97%;
+    height: 97%; 
     margin-top: 0.7%;
     margin-left: 2%;
     background-color: #272134;
     border-radius: 15%;
 `;
 
+// Estilização do footer 
 
 const Footer = styled.div`
 display: flex;
-background-color: blue;
+flex-direction: row;
+background-color: #272134;
 color: white;
 width: 100%;
 height: 10vh;
 flex-grow:0; //PARA MANTER ALTURA FIXA
-/* justify-content: center; */
-/* img{
-  overflow: hidden;
-  
-  
+justify-content: space-between;
+ align-items: center;
 
-} */
+ `
+const CaixaTexto = styled.div`
+background-color:#272134;
+color:#bf870d;
+height:100%;
+text-align: center;
+justify-content:center;
+justify-self: flex-start;
 
-h3{
-  font-size: 1.5rem;
-  color: #bf870d;
-  text-align: center;
-  
-  
-}
- h5{
-   color: #bf870d;
-   text-align: center;
- }`
+`
+const IconesFooter = styled.div`
+background-color: blue;
+height: 100%;
+width: 25%;
+text-align: center;
+justify-content: center;
 
+`
+const TextoIconeFooter = styled.a`
+background-color: brown;
+ width:100%;
+ height: 100%;
+ justify-content:space-evenly;
+ align-items: center;
+ display: flex;
+ flex-direction: row;
+
+`
 
 
 
@@ -93,10 +107,28 @@ class App extends React.Component {
         <LogoDiv>
             <Logo src={img} alt="Imagem do logo" />
           </LogoDiv>
-          <div>
-          <h3>Empresa StarLab CNPJ 00000000</h3>
-          <h5>Desenvolvido por: Martin Sejas, Stella Castro e William Freitas</h5>
-          </div>
+       
+          <CaixaTexto>
+          <p>Empresa StarLab CNPJ 00000000</p>
+         
+          <p>Desenvolvido por: Martin Sejas, Stella Castro e William Freitas</p>
+          </CaixaTexto>
+
+          <IconesFooter>
+            <TextoIconeFooter> 
+              <a href=''>
+                rede sociais
+              </a>
+              <a href=''>
+                rede sociais
+              </a>
+              <a href=''>
+                rede sociais
+              </a>
+            </TextoIconeFooter>
+          </IconesFooter>
+
+          
         </Footer>
       </Pai>
     );
