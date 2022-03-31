@@ -123,7 +123,7 @@ export default class Produtos extends React.Component{
                 </OrdenarProdutos>
 
                 <ProdutosCardContainer>
-                 {produtosRenderizados}
+                 {produtosRenderizados }
                 </ProdutosCardContainer>
 
             </ContainerProdutos>

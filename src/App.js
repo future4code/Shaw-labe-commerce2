@@ -18,14 +18,14 @@ background-color: #272134;
 width: 100%; 
 height: 10vh; 
 flex-grow: 0; //PARA MANTER ALTURA FIXA
+justify-content: center;
+align-items: center;
 `;
 
 const LogoDiv = styled.div`
   width: 7%;
   height: 71%;
   background-color: #bf870d;
-  margin-top: 0.7%;
-  margin-left: 2%;
   border-radius: 15%;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 `
