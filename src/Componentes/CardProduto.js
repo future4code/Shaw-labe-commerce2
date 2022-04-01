@@ -67,7 +67,7 @@ export default class CardProduto extends React.Component {
             <ContainerCard>
 
                 <FundoImagemCartao>
-                    <ImagemCartao img src={imgArmored} />
+                    <ImagemCartao img src={produto.image} />
                 </FundoImagemCartao>
 
                 <ConteudoCartao>

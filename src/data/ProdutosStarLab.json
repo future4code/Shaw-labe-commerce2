@@ -3,36 +3,36 @@
         "id": 1,
         "name": "Armored Han Solo Action Figure",
         "price": 100,
-        "image": ""
+        "image": "https://imgur.com/Rsev0Cb"
     },
     {
         "id": 2,
         "name": "Boba Fett Action Figure",
         "price": 50,
-        "image": ""
+        "image": "https://imgur.com/uNGPBOd"
     },
     {
         "id": 3,
         "name": "Chewbacca Action Figure",
         "price": 150,
-        "image": ""
+        "image": "https://imgur.com/Ixi3YhI"
     },
     {
         "id": 4,
         "name": "Darth Vader Figure",
         "price": 250,
-        "image": ""
+        "image": "https://imgur.com/Euz5DnP"
     },
     {
         "id": 5,
         "name": "Han Solo Action Figure",
         "price": 200,
-        "image": ""
+        "image": "https://imgur.com/RnjgLmc"
     },
     {
         "id": 6,
         "name": "Stormtrooper Action Figure",
         "price": 75,
-        "image": ""
+        "image": "https://imgur.com/8ZXzEIM"
     }
 ]
