@@ -34,5 +34,23 @@
         "name": "Stormtrooper Action Figure",
         "price": 75,
         "image": "https://i.imgur.com/8ZXzEIM.png"
+    },
+    {
+        "id": 7,
+        "name": "Kylo Ren Action Figure",
+        "price": 70,
+        "image": "https://i.imgur.com/NVpbcaY.png"
+    },
+    {
+        "id": 8,
+        "name": "Alden Ehrenreich Action Figure",
+        "price": 425,
+        "image": "https://i.imgur.com/tFSIEg5.png"
+    },
+    {
+        "id": 9,
+        "name": "Obi-wan Kenobi Action Figure",
+        "price": 375,
+        "image": "https://i.imgur.com/pOHrvpI.png"
     }
 ]
