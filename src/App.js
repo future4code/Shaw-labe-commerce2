@@ -1,7 +1,11 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
 import StarLab from './Componentes/StarLab';
-import img from './Imagens/StarLab-Logo.png'
+import img from './Imagens/StarLab-Logo.png';
+import facebook from './Imagens/facebook_logo2.png';
+import instagram from './Imagens/instagram_logo2.png';
+import twitter from './Imagens/twitter_logo2.png';
+import github from './Imagens/github_StarLab.png';
 
 //CONTAINER PRINCIPAL
 const Pai = styled.div`
@@ -53,26 +57,37 @@ flex-grow:0; //PARA MANTER ALTURA FIXA
 justify-content: space-between;
  align-items: center;
 
+ #logofooter{
+   margin-left:auto;
+   margin-right: auto;
+ }
  `
+
 const CaixaTexto = styled.div`
 background-color:#272134;
 color:#bf870d;
 height:100%;
 text-align: center;
-justify-content:center;
-justify-self: flex-start;
+justify-content:space-between;
+display: flex;
+flex-direction:row;
+width:50%;
+align-items: center;
+font-size: 1.2rem;
+
+
 
 `
 const IconesFooter = styled.div`
 background-color: blue;
 height: 100%;
-width: 25%;
+width: 32%;
 text-align: center;
 justify-content: center;
 
 `
 const TextoIconeFooter = styled.a`
-background-color: brown;
+background-color:#272134;
  width:100%;
  height: 100%;
  justify-content:space-evenly;
@@ -80,11 +95,16 @@ background-color: brown;
  display: flex;
  flex-direction: row;
 
+img{
+  max-height: 5vh;
+  max-width: 2vw;
+}
+
+#logofb{
+max-width: 4vw;
+max-height: 5vh;
+}
 `
-
-
-
-
 class App extends React.Component {
 
   render() {
@@ -104,32 +124,40 @@ class App extends React.Component {
 
 
         <Footer>
-        <LogoDiv>
+        <LogoDiv id="logofooter">
             <Logo src={img} alt="Imagem do logo" />
           </LogoDiv>
        
           <CaixaTexto>
           <p>Empresa StarLab CNPJ 00000000</p>
          
-          <p>Desenvolvido por: Martin Sejas, Stella Castro e William Freitas</p>
+          <p>Desenvolvido por: Martin S., Stella N. e William F.</p>
           </CaixaTexto>
 
           <IconesFooter>
-            <TextoIconeFooter> 
-              <a href=''>
-                rede sociais
+            <TextoIconeFooter>
+
+               <a href='https://www.instagram.com/' target="_blank">
+               <img src={instagram} alt= "logo instagram"></img>
               </a>
-              <a href=''>
-                rede sociais
+                 
+               <a href='https://www.facebook.com/'target="_blank">
+               <img src={facebook} alt= "logo facebook" id="logofb" ></img>
               </a>
-              <a href=''>
-                rede sociais
+            
+               <a href='https://twitter.com/'target="_blank">
+               <img src={twitter} alt= "logo twitter"></img>
               </a>
+
+              <a href='https://github.com/future4code/Shaw-labe-commerce2'target="_blank">
+               <img src={github} alt= "logo github"></img>
+              </a>
+
             </TextoIconeFooter>
           </IconesFooter>
-
           
         </Footer>
+        
       </Pai>
     );
   }
