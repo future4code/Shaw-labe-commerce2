@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import imgArmored from "../Imagens/ArmoredHanSolo.png"
-import imgBobaFett from "../Imagens/BobaFett.png"
-import imgChewbacca from "../Imagens/Chewbacca.png"
-import imgDarthVader from "../Imagens/DarthVader.png"
-import imgHanSolo from "../Imagens/HanSolo.png"
-import imgStormtrooper from "../Imagens/Stormtrooper.png"
+
 
 
 const ContainerCard = styled.div`
@@ -13,8 +8,8 @@ const ContainerCard = styled.div`
 display: flex; 
 flex-direction: column;
 border: 2px solid black; 
-min-width:29%; 
-max-width:29%; 
+min-width:26%; 
+max-width:26%; 
 height: 60vh;
 margin-left: 0.2%; 
 margin-right: 0.2%; 
@@ -57,9 +52,24 @@ color: #bf870d;
 //ACESSAR COM produto = this.props.Produto
 //cada produto tem: id, name, price, e image
 
+//VOU PRECISAR SUBIR NO LOCAL STORAGE PRECO ID E NOME
+//FAZER LOCAL STORAGE QUANDO O STARTLAB.JS RENDERIZAR POR PRIMEIRA VEZ
+//NOSSOS PRODUTOS SAO FIXOS, ENTAO EU JA SEI OS ID DIFERENTES, E O TAMNHO DA MINHA LISTA DE OBJETOS NO STORAGE
+
+
 
 
 export default class CardProduto extends React.Component {
+
+    // atualizarCarrinho = () => {
+    //     let item = this.props.Produto.name; 
+
+    //     let velhoItem = JSON.parse(localStorage.getItem(item));
+    //     velhoItem['quantity'] = velhoItem.quantity + 1; 
+    //     localStorage.setItem(item, JSON.stringify(velhoItem)); 
+    
+    // }
+
 
     render() {
         let produto = this.props.Produto
@@ -73,7 +83,7 @@ export default class CardProduto extends React.Component {
                 <ConteudoCartao>
                     <p>{produto.name}</p>
                     <p>R$ {produto.price}</p>
-                    <BotaoCartao button>Adicionar ao Carrinho</BotaoCartao>
+                    <BotaoCartao button onClick={() => {this.props.atualizarCarrinho(produto.name)}}>Adicionar ao Carrinho</BotaoCartao>
                 </ConteudoCartao>
 
             </ContainerCard>
