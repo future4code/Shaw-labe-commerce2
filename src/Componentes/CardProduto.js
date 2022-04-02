@@ -61,17 +61,14 @@ color: #bf870d;
 
 export default class CardProduto extends React.Component {
 
-    atualizarCarrinho = () => {
-        let item = this.props.Produto.name; 
+    // atualizarCarrinho = () => {
+    //     let item = this.props.Produto.name; 
 
-        let velhoItem = JSON.parse(localStorage.getItem(item));
-
-        console.log(velhoItem);
-        velhoItem['quantity'] = velhoItem.quantity + 1; 
-        console.log(velhoItem);
-        localStorage.setItem(item, JSON.stringify(velhoItem)); 
+    //     let velhoItem = JSON.parse(localStorage.getItem(item));
+    //     velhoItem['quantity'] = velhoItem.quantity + 1; 
+    //     localStorage.setItem(item, JSON.stringify(velhoItem)); 
     
-    }
+    // }
 
 
     render() {
@@ -86,7 +83,7 @@ export default class CardProduto extends React.Component {
                 <ConteudoCartao>
                     <p>{produto.name}</p>
                     <p>R$ {produto.price}</p>
-                    <BotaoCartao button onClick={this.atualizarCarrinho}>Adicionar ao Carrinho</BotaoCartao>
+                    <BotaoCartao button onClick={() => {this.props.atualizarCarrinho(produto.name)}}>Adicionar ao Carrinho</BotaoCartao>
                 </ConteudoCartao>
 
             </ContainerCard>

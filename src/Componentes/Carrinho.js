@@ -11,7 +11,7 @@ color: white;
 text-align: center; 
 
 p {
-    font-size: 1.5rem; 
+    font-size: 1rem; 
     color: white; 
     font-weight: 700;
     
@@ -23,12 +23,14 @@ const ItemNoCarrinho = styled.div`
 
 `
 
-
+//usar storage soh para guardar estado atual do carrinho, vou ter que passar como state do Starlab quantidade de produto
 export default class Carrinho extends React.Component{
 
     state = {
         //variavel de preco total
+        firstMount: true,
         valorTotal: 0,
+
     }
 
     //passe como props um boolean para aqui, quando eu fizer a lista no storage, mudar
@@ -38,19 +40,25 @@ export default class Carrinho extends React.Component{
 
 
     //PEGAR OBJETOS DO LOCAL STORAGE, SE TIVE QUANTIDADE, MOSTRAR NO CARRINHO
-    componentDidMount() 
-    {
-        //importar produtos
-        let produtosStorage = ListaProdutos; 
+    // componentDidMount() 
+    // {
+    //     if(this.state.firstMount) {
+    //         //importar produtos
+    //         let produtosStorage = ListaProdutos; 
+      
+    //         //iterar por cada produto
+    //         for(let prod of produtosStorage)
+    //         {
+    //             let produtoCarrinho = {id: prod.id, name: prod.name, price: prod.price, quantity: 0}; 
+    //             localStorage.setItem(produtoCarrinho.name, JSON.stringify(produtoCarrinho))
+    //         }
+
+    //         this.setState({firstMount: false}); 
+    //     }
   
-        //iterar por cada produto
-        for(let prod of produtosStorage)
-        {
-            let produtoCarrinho = {id: prod.id, name: prod.name, price: prod.price, quantity: 0}; 
-            localStorage.setItem(produtoCarrinho.name, JSON.stringify(produtoCarrinho))
-        }
-  
-    }
+    // }
+
+
 
 
 
@@ -60,34 +68,33 @@ export default class Carrinho extends React.Component{
         //lista dos nomes
 
         //importar lista de produtos
-      let produtos = ListaProdutos; 
+      let produtos = this.props.produtosNoCarrinho; 
 
-      //pegar soh os nomes para puxar do local storage
-      let nomesItens = produtos.map( (prod) => {
-          return prod.name; 
-      })
+    //   //pegar soh os nomes para puxar do local storage
+    //   let nomesItens = produtos.map( (prod) => {
+    //       return prod.name; 
+    //   })
 
       
       //puxar cada item do storage em loop, se quantidade for maior que zero guardar
 
 
-      let cardsNoCarrinho = nomesItens.map ( (nome) => {
-          return (JSON.parse(localStorage.getItem(nome)))
-      }).filter( (card) => {
-          return (card.quantity > 0)
-      })
+    //   let cardsNoCarrinho = nomesItens.map ( (nome) => {
+    //       return (JSON.parse(localStorage.getItem(nome)))
+    //   }).filter( (card) => {
+    //       return card.quantity >= 0;
+    //   })
 
-      console.log(cardsNoCarrinho);
 
      //aqui tenho cards filtrados no carrinho, minimo 1 quantidade
      //tenho no state variavel valorTotal
-
-    //  const renderizarCarrinho = cardsNoCarrinho.map( (card) => {
-
-    //     this.setState({valorTotal: (this.state.valorTotal + (card.quantidade*card.price))});
-    //      return (<ItemNoCarrinho> <p> {card.quantidade}x {card.name} <button>Remover</button> </p></ItemNoCarrinho>)
-    //  })
-
+      let total = 0; 
+     let renderizarCarrinho = produtos.map( (card) => {
+        // console.log("Estou dentro do renderizar Carrinho", card, card.price);
+         total+=(card.quantity*card.price);
+         return (<ItemNoCarrinho key={card.id}> <p> {card.quantity}x {card.name} <button >Remover</button> </p></ItemNoCarrinho>)
+     })
+     console.log(total)
      // <div> <p> {cardsNoCarrinho.quantidade}x {cardsNoCarrinho.nome} <button>Remover</button> </p> </div>
 
 
@@ -96,8 +103,8 @@ export default class Carrinho extends React.Component{
         return (
             <ContainerCarrinho>
                 <p>Carrinho</p>
-              
-                <p>Valor Total(R$) : {this.state.valorTotal}</p>
+                {renderizarCarrinho}
+                <p>Valor Total(R$) : {total}</p>
             </ContainerCarrinho>
         )
     }

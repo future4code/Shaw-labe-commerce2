@@ -30,11 +30,65 @@ export default class Starlab extends React.Component
         filtroMinimo: "",
         filtroMaximo: "",
         filtroNome: "",
+        produtos: ListaProdutos, 
+
+        //state para controlar produtos no carrinho com quantidade
+        produtosNoCarrinho: [],
 
     }
 
+    //process card Click pro carrinho
+    processCardClick = (name) => {
+        let myProducts = [...this.state.produtos]; 
+        let myCard = myProducts.filter( (prod) => {
+            return (prod.name === name)
+        })
+        //processo card click no starlabs
+        console.log(name, "card clicked", myCard)
+        let cardNotOnCart = true;
+        let updatedProducts;
+        //se produtos no carrinho existir
+        if (this.state.produtosNoCarrinho) {
+         updatedProducts = this.state.produtosNoCarrinho.map ( (card) =>
+            {
+                if (card.name === name)
+                {
+                    cardNotOnCart = false; 
+                    card.quantity++;
+                }
+                return (card)
+        })
+        }
+        //adiciona no carrinho com quantitade atualizada
+        if (!cardNotOnCart) 
+        {
+            this.setState({produtosNoCarrinho: updatedProducts});
+        }
+        //adiciona no carrinho por primeira vez
+        else {
+           
+            let novoCarrinho = [];   
+            let novoItemNoCarrinho = {id: myCard[0].id, name: myCard[0].name, price: myCard[0].price, quantity: 1};
+            if (this.state.produtosNoCarrinho.length === 0) {
+                novoCarrinho.push(novoItemNoCarrinho);
+                this.setState({produtosNoCarrinho: novoCarrinho})
+          
+            }
+            else 
+            {
+                novoCarrinho = [...this.state.produtosNoCarrinho, novoItemNoCarrinho]
+                this.setState({produtosNoCarrinho: novoCarrinho}); 
+            }
+            
+        }
+
+        
+    }
+
+
+
  
-   
+
 
  
 
@@ -45,7 +99,10 @@ export default class Starlab extends React.Component
         filtroMinimo={ this.state.filtroMinimo} //prop de valor minimo do filtro
         filtroMaximo={this.state.filtroMaximo} //prop de valor maximo do filtro
         filtroNome={this.state.filtroNome } //prop de nome do filtro
+        cardClick={(name) => this.processCardClick(name)}
         />)
+
+        console.log("iten no carrinho", this.state.produtosNoCarrinho)
 
              /* ::::::::::::::::::::::::::::::::::::::::: PROPS DE <Filtros> :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -72,7 +129,9 @@ export default class Starlab extends React.Component
                 
 
               
-                <Carrinho>
+                <Carrinho
+                produtosNoCarrinho = {this.state.produtosNoCarrinho}
+                >
 
                 </Carrinho>
 

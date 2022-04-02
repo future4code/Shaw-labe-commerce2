@@ -126,7 +126,7 @@ export default class Produtos extends React.Component{
         //observe que usamos o id do produto como key pro react, para não dar ruim
 
         let produtosRenderizados = produtosFiltrados.map( (produto) => {
-            return ( <CardProduto key={produto.id} Produto = {produto}> </CardProduto>)
+            return ( <CardProduto key={produto.id} Produto = {produto} atualizarCarrinho = { (name) => {this.props.cardClick(name)}}> </CardProduto>)
         })
         return (
             <ContainerProdutos>
