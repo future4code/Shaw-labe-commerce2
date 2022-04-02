@@ -70,29 +70,24 @@ export default class Carrinho extends React.Component{
         //importar lista de produtos
       let produtos = this.props.produtosNoCarrinho; 
 
-    //   //pegar soh os nomes para puxar do local storage
-    //   let nomesItens = produtos.map( (prod) => {
-    //       return prod.name; 
-    //   })
+
 
       
       //puxar cada item do storage em loop, se quantidade for maior que zero guardar
 
-
-    //   let cardsNoCarrinho = nomesItens.map ( (nome) => {
-    //       return (JSON.parse(localStorage.getItem(nome)))
-    //   }).filter( (card) => {
-    //       return card.quantity >= 0;
-    //   })
-
-
-     //aqui tenho cards filtrados no carrinho, minimo 1 quantidade
-     //tenho no state variavel valorTotal
       let total = 0; 
-     let renderizarCarrinho = produtos.map( (card) => {
+
+        //filtrar itens com quantidade zero
+    let filtrarCarrinho = produtos.map( (item) => {
+        return (item)
+    }).filter( (item) => {
+        return( item.quantity> 0)
+    })
+
+     let renderizarCarrinho = filtrarCarrinho.map( (card) => {
         // console.log("Estou dentro do renderizar Carrinho", card, card.price);
          total+=(card.quantity*card.price);
-         return (<ItemNoCarrinho key={card.id}> <p> {card.quantity}x {card.name} <button >Remover</button> </p></ItemNoCarrinho>)
+         return (<ItemNoCarrinho key={card.id}> <p> {card.quantity}x {card.name} <button onClick={() => this.props.removeItem(card.id)} >Remover</button> </p></ItemNoCarrinho>)
      })
      console.log(total)
      // <div> <p> {cardsNoCarrinho.quantidade}x {cardsNoCarrinho.nome} <button>Remover</button> </p> </div>

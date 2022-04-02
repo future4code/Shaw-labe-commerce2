@@ -85,6 +85,22 @@ export default class Starlab extends React.Component
         
     }
 
+    removeCartItem = (id) => {
+        let cart = [...this.state.produtosNoCarrinho]; 
+
+        let updatedCart = cart.map( (item) => 
+        {
+            if (item.id === id) 
+            {
+                item.quantity--; 
+            }
+
+            return (item)
+        })
+
+        this.setState({produtosNoCarrinho: updatedCart})
+    }
+
 
 
  
@@ -131,6 +147,7 @@ export default class Starlab extends React.Component
               
                 <Carrinho
                 produtosNoCarrinho = {this.state.produtosNoCarrinho}
+                removeItem = { (id) => this.removeCartItem(id)}
                 >
 
                 </Carrinho>
