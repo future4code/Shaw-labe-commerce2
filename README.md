@@ -11,7 +11,7 @@
 - Nada
 
 ## Link Surge 
-[Loja StarLab](https://http://guarded-thumb.surge.sh/)
+[Loja StarLab](https://guarded-thumb.surge.sh/)
 
 ## Imagens
 
