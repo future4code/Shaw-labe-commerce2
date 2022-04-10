@@ -39,7 +39,7 @@ background:url(${Background});
 flex-grow: 1; 
 padding-bottom: 3%;
 flex-wrap: wrap;
-border: 1px solid #bf870d
+border: 1px solid #bf870d;
 `
 
 const OrdenarSelecao = styled.div`
@@ -70,6 +70,13 @@ export default class Produtos extends React.Component{
         //se order = 1, ordem de valor minimo primeiro, se -1 valor maximo primeiro
         order: 1,  
     }
+    //VOU PRECISAR SUBIR NO LOCAL STORAGE PRECO ID E NOME
+    //FAZER LOCAL STORAGE QUANDO O STARTLAB.JS RENDERIZAR POR PRIMEIRA VEZ
+    //NOSSOS PRODUTOS SAO FIXOS, ENTAO EU JA SEI OS ID DIFERENTES, E O TAMNHO DA MINHA LISTA DE OBJETOS NO STORAGE
+
+   //SUBIR QUANDO FOR RENDERIZADO A PRIMEIRA VEZ
+ 
+
 
     //função de ordenar produtos
     ordemDeProdutos = (event) => {
@@ -119,7 +126,7 @@ export default class Produtos extends React.Component{
         //observe que usamos o id do produto como key pro react, para não dar ruim
 
         let produtosRenderizados = produtosFiltrados.map( (produto) => {
-            return ( <CardProduto key={produto.id} Produto = {produto}> </CardProduto>)
+            return ( <CardProduto key={produto.id} Produto = {produto} atualizarCarrinho = { (name) => {this.props.cardClick(name)}}> </CardProduto>)
         })
         return (
             <ContainerProdutos>
